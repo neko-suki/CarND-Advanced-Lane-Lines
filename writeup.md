@@ -53,7 +53,7 @@ One of the obtained results is as follows
 
 |case|before undistorted|after undistorted|
 |-|-|-|
-|caliobration1.jpg|<img src="../camera_cal/calibration1.jpg" title="original" width=240>|   <img src="../work/camera_cal_results/calibration1.jpg" title="undistorted" width=240>|
+|caliobration1.jpg|<img src="./camera_cal/calibration1.jpg" title="original" width=240>|   <img src="./work/camera_cal_results/calibration1.jpg" title="undistorted" width=240>|
 
 You can see all the results in [here](doc/camera_cal_results.md)
 
