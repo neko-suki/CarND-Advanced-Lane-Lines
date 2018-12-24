@@ -11,23 +11,9 @@ The goals / steps of this project are the following:
 * Warp the detected lane boundaries back onto the original image.
 * Output visual display of the lane boundaries and numerical estimation of lane curvature and vehicle position.
 
-[//]: # (Image References)
-
-[image1]: ./examples/undistort_output.png "Undistorted"
-[image2]: ./test_images/test1.jpg "Road Transformed"
-[image3]: ./examples/binary_combo_example.jpg "Binary Example"
-[image4]: ./examples/warped_straight_lines.jpg "Warp Example"
-[image5]: ./examples/color_fit_lines.jpg "Fit Visual"
-[image6]: ./examples/example_output.jpg "Output"
-[video1]: ./project_video.mp4 "Video"
-
-## [Rubric](https://review.udacity.com/#!/rubrics/571/view) Points
-
 ### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
 ---
-
-### Writeup / README
 
 ### Camera Calibration
 
@@ -49,7 +35,7 @@ You can see all the results [here](doc/camera_cal_results.md).
 
 ### Pipeline (single images)
 
-#### 1. Provide an example of a distortion-corrected image.
+#### 1. Distortion Correction
 
 The code for undistorion is in section 'Undistort' in  [./work/work.ipynb](./work/work.ipynb)
 Following is one example from the `test_images`. 
@@ -60,7 +46,7 @@ Following is one example from the `test_images`.
 
 You can see all the result [here](doc/undistort_results.md). 
 
-#### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
+#### 2. Make binary image
 
 The code for making binary image is in section 'Make binary image' in  [./work/work.ipynb](./work/work.ipynb)
 
@@ -89,7 +75,7 @@ Following is one example from the `test_images`.
 
 You can see all the result [here](doc/binary_results.md). 
 
-#### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
+#### 3. Make perspective image
 
 The code for makeing perspective image is in section 'Make perspective image' in  [./work/work.ipynb](./work/work.ipynb)
 The function I defined is `make_perspective_image()`. 
@@ -116,7 +102,7 @@ The result for `straight_lines1.jpg` seemingly not straight lines. However, from
 In addition, it is very difficult to make this image as straight line with keep other images meaningful, i.e. having lane line inside the perspective image. 
 
 
-#### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
+#### 4. make polynomial fitting
 
 The code for polynomial fitting is in section 'Fit Polynomial' in  [./work/work.ipynb](./work/work.ipynb)
 The function I defined is `make_polyfit_image()`.  Inside the function, I did window search and fitting with 2nd order polynomial as introduced in the course. 
@@ -131,7 +117,7 @@ Following is one example from the `test_images`.
 
 You can see all the result [here](doc/polyfit_images.md). 
 
-#### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
+#### 5. calculate curvature
 
 The code for calculating curvature is in section 'Measure Curvature' in  [./work/work.ipynb](./work/work.ipynb)
 
@@ -159,9 +145,9 @@ The first shows the file of image, the second shows the left line curvature, and
 ```
 
 
-#### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
+#### 6. Drawing back down on to the road
 
-The code for drawing back down on to the load is in section 'Drawing' in  [./work/work.ipynb](./work/work.ipynb)
+The code for drawing back down on to the road is in section 'Drawing' in  [./work/work.ipynb](./work/work.ipynb)
 
 A function `create_final_image(img, warped, left_fitx, right_fitx, Minv, left_curvature)` makes drawn image.
 
@@ -181,7 +167,8 @@ You can see all the result [here](doc/final_results.md).
 
 ### Pipeline (video)
 
-#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
+#### 1. Pipelined video
+
 The code pipelining all the process is in section 'Pipeline' in  [./work/work.ipynb](./work/work.ipynb)
 
 `process_image(img):` compute all the process that I had shown. 
@@ -192,22 +179,20 @@ Here's a [link to my video result](output_videos/project_video.mp4)
 
 ### Discussion
 
-#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
-
 Here I'll talk about problems what I faced with the project. 
 
-### Lots of parameters 
+#### Lots of parameters 
 The pipline has a lots of parameters for tuning. In the current project, the scene is only highway with sunny and daylight. 
 
 Pipline with the parameter may make bad result if the condition of ther road or time changes. 
 
-## Processing time 
+#### Processing time 
 Current pipline shows about 1 sec to make results. In the real world, 1 sec is too slow to detect edge. 
 I also tried `Skip the sliding windows step once you've found the lines` introduced in lectures. But it doesn't improve the performance. 
 
 I can improve the performance by dropping some step, e.g. only use color or only use gradient, to speedup processing time, make speedup.  However, we should consider trade-off between the precision of the result and throughput of detection. 
 
-## Hypothesis case to be failed
+#### Hypothesis case to be failed
 In the perspective step, I assumed that the left lane is on 200, and the right one is on 1100 at the bottom of the image. If this assumption is wrong, the result of the lane line detection may fail. 
 
 Self detection of the position at the bottom of the image may improve the result. 
