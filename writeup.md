@@ -51,8 +51,14 @@ You can see all the results [here](doc/camera_cal_results.md).
 
 #### 1. Provide an example of a distortion-corrected image.
 
-To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
-![alt text][image2]
+The code is section 'Undistort' in  [./work/work.ipynb](./work/work.ipynb)
+To demonstrate this step, I will describe how I apply the distortion correction to one of the test image. 
+
+|case|before undistorted|after undistorted|
+|-|-|-|
+|straight_line1.jpg|<img src="./test_images/straightline1.jpg" title="original" width=240>|   <img src="./output_images/undistort_images/straightline1.jpg" title="undistorted" width=240>|
+
+You can see all the result [here](doc/undistort_results.md). 
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
