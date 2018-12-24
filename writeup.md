@@ -186,7 +186,7 @@ The code pipelining all the process is in section 'Pipeline' in  [./work/work.ip
 
 `process_image(img):` compute all the process that I had shown. 
 
-Here's a [link to my video result](output_video/project_video.mp4)
+Here's a [link to my video result](output_videos/project_video.mp4)
 
 ---
 
