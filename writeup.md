@@ -1,9 +1,3 @@
-## Writeup Template
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
-
----
-
 **Advanced Lane Finding Project**
 
 The goals / steps of this project are the following:
@@ -35,10 +29,6 @@ The goals / steps of this project are the following:
 
 ### Writeup / README
 
-#### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one.  You can submit your writeup as markdown or pdf.  [Here](https://github.com/udacity/CarND-Advanced-Lane-Lines/blob/master/writeup_template.md) is a template writeup for this project you can use as a guide and a starting point.  
-
-You're reading it!
-
 ### Camera Calibration
 
 #### 1. Briefly state how you computed the camera matrix and distortion coefficients. Provide an example of a distortion corrected calibration image.
@@ -55,7 +45,7 @@ One of the obtained results is as follows
 |-|-|-|
 |caliobration1.jpg|<img src="./camera_cal/calibration1.jpg" title="original" width=240>|   <img src="./output_images/camera_cal_results/calibration1.jpg" title="undistorted" width=240>|
 
-You can see all the results in [here](doc/camera_cal_results.md)
+You can see all the results [here](doc/camera_cal_results.md). 
 
 ### Pipeline (single images)
 
