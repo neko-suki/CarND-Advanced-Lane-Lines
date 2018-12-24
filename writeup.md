@@ -51,8 +51,8 @@ You can see all the results [here](doc/camera_cal_results.md).
 
 #### 1. Provide an example of a distortion-corrected image.
 
-The code is section 'Undistort' in  [./work/work.ipynb](./work/work.ipynb)
-To demonstrate this step, I will describe how I apply the distortion correction to one of the test image. 
+The code for undistorion is in section 'Undistort' in  [./work/work.ipynb](./work/work.ipynb)
+Following is one example from the `test_images`. 
 
 |case|before undistorted|after undistorted|
 |-|-|-|
@@ -62,9 +62,32 @@ You can see all the result [here](doc/undistort_results.md).
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+The code for undistorion is in section 'Make binary image' in  [./work/work.ipynb](./work/work.ipynb)
 
-![alt text][image3]
+I used a combination of color and gradient threshold to generate binary image. 
+
+For the gradient, I used following parameters for sobel operator. 
+
+```
+sobel_thresh_min = 20
+sobel_thresh_max = 220
+sobel_kernel_size = 7
+```
+
+For color, I used following parameters as the threshold. 
+
+```
+s_thresh_min = 170
+s_thresh_max = 230
+```
+
+Following is one example from the `test_images`. 
+
+|case|before undistorted|after undistorted|
+|-|-|-|
+|straight_lines1.jpg|<img src="./test_images/straight_lines1.jpg" title="original" width=240>|   <img src="./output_images/binary_images/straight_lines1.jpg" title="undistorted" width=240>|
+
+You can see all the result [here](doc/binary_results.md). 
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
