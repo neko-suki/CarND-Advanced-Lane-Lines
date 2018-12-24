@@ -1,6 +1,3 @@
-# Results of camera calibration
-
-
 |case|before undistorted|after undistorted|
 |-|-|-|
 |straight_line1.jpg|<img src="../test_images/straight_lines1.jpg" title="original" width=240>| <img src="../output_images/undistort_images/straight_lines1.jpg" title="undistorted" width=240>|
