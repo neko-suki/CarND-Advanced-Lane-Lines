@@ -62,7 +62,7 @@ You can see all the result [here](doc/undistort_results.md).
 
 #### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-The code for undistorion is in section 'Make binary image' in  [./work/work.ipynb](./work/work.ipynb)
+The code for making binary image is in section 'Make binary image' in  [./work/work.ipynb](./work/work.ipynb)
 
 I used a combination of color and gradient threshold to generate binary image. 
 
@@ -91,7 +91,7 @@ You can see all the result [here](doc/binary_results.md).
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The code for undistorion is in section 'Make perspective image' in  [./work/work.ipynb](./work/work.ipynb)
+The code for makeing perspective image is in section 'Make perspective image' in  [./work/work.ipynb](./work/work.ipynb)
 The function I defined is `make_perspective_image()`. 
 
 I hardcoded the src and dst in the code as follows. 
@@ -118,7 +118,7 @@ In addition, it is very difficult to make this image as straight line with keep 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-The code for undistorion is in section 'Fit Polynomial' in  [./work/work.ipynb](./work/work.ipynb)
+The code for polynomial fitting is in section 'Fit Polynomial' in  [./work/work.ipynb](./work/work.ipynb)
 The function I defined is `make_polyfit_image()`.  Inside the function, I did window search and fitting with 2nd order polynomial as introduced in the course. 
 
 Here, I did not make tuning because the final results is clearly acceptable. 
@@ -133,13 +133,43 @@ You can see all the result [here](doc/polyfit_images.md).
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lines # through # in my code in `my_other_file.py`
+The code for calculating curvature is in section 'Measure Curvature' in  [./work/work.ipynb](./work/work.ipynb)
+
+Here, I used 3rd order polynomial to compute curvature since 2nd order polynomial made a goot result. The result from 2nd order polynomial shows 80000 [m].  The 3rd order polynomial shows better result than the 2nd order polynomial. 
+
+I used `xm_per_pix = 3.7/900` since I perspected left lane at 200 and right lane at 1100. 
+
+The first shows the file of image, the second shows the left line curvature, and the third shows the right curvature. 
+
+```
+../test_images/straight_lines1.jpg left_curvature = 1713.936 [m], right_curvature = 656.750 [m]
+../test_images/straight_lines2.jpg left_curvature = 1432.029 [m], right_curvature = 1320.389 [m]
+../test_images/test1.jpg left_curvature = 217.077 [m], right_curvature = 252.190 [m]
+../test_images/test2.jpg left_curvature = 192.637 [m], right_curvature = 130.205 [m]
+../test_images/test3.jpg left_curvature = 339.424 [m], right_curvature = 189.341 [m]
+../test_images/test4.jpg left_curvature = 116.079 [m], right_curvature = 2840.492 [m]
+../test_images/test5.jpg left_curvature = 349.368 [m], right_curvature = 477.523 [m]
+../test_images/test6.jpg left_curvature = 168.173 [m], right_curvature = 131.019 [m]
+```
+
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+The code for drawing back down on to the load is in section 'Drawing' in  [./work/work.ipynb](./work/work.ipynb)
 
-![alt text][image6]
+A function `create_final_image(img, warped, left_fitx, right_fitx, Minv, left_curvature)` make drawn image.
+
+The fist argument is the original image. The second one is wrapped images with polyfit line. The third and fourth is polygitted x coordinates of left and right lanes. They are used to compute offset of the vehicle. Minv is used to compute inverse perspectrive. 
+The last argument is used to plot curvature of lane. 
+
+Following is one example from the `test_images`. 
+
+|case|before|after|
+|-|-|-|
+|straight_lines1.jpg|<img src="./test_images/straight_lines1.jpg" width=240>|   <img src="./output_images/final_images/straight_lines1.jpg" width=240>|
+
+You can see all the result [here](doc/final_images.md). 
+
 
 ---
 
