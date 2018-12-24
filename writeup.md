@@ -194,4 +194,22 @@ Here's a [link to my video result](output_videos/project_video.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+Here I'll talk about problems what I faced with the project. 
+
+### Lots of parameters 
+The pipline has a lots of parameters for tuning. In the current project, the scene is only highway with sunny and daylight. 
+
+Pipline with the parameter may make bad result if the condition of ther road or time changes. 
+
+## Processing time 
+Current pipline shows about 1 sec to make results. In the real world, 1 sec is too slow to detect edge. 
+I also tried `Skip the sliding windows step once you've found the lines` introduced in lectures. But it doesn't improve the performance. 
+
+I can improve the performance by dropping some step, e.g. only use color or only use gradient, to speedup processing time, make speedup.  However, we should consider trade-off between the precision of the result and throughput of detection. 
+
+## Hypothesis case to be failed
+In the perspective step, I assumed that the left lane is on 200, and the right one is on 1100 at the bottom of the image. If this assumption is wrong, the result of the lane line detection may fail. 
+
+Self detection of the position at the bottom of the image may improve the result. 
+
+2nd order polynomial may be faiiled if the lane line has two curves like `harder_challenge_video.mp4`. 3rd order polynomial or another equation to represent lane line is required.
