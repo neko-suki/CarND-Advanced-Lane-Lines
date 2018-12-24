@@ -155,9 +155,21 @@ The first shows the file of image, the second shows the left line curvature, and
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+The code for drawing back down on to the load is in section 'Drawing' in  [./work/work.ipynb](./work/work.ipynb)
 
-![alt text][image6]
+A function `create_final_image(img, warped, left_fitx, right_fitx, Minv, left_curvature)` make drawn image.
+
+The fist argument is the original image. The second one is wrapped images with polyfit line. The third and fourth is polygitted x coordinates of left and right lanes. They are used to compute offset of the vehicle. Minv is used to compute inverse perspectrive. 
+The last argument is used to plot curvature of lane. 
+
+Following is one example from the `test_images`. 
+
+|case|before|after|
+|-|-|-|
+|straight_lines1.jpg|<img src="./test_images/straight_lines1.jpg" width=240>|   <img src="./output_images/final_images/straight_lines1.jpg" width=240>|
+
+You can see all the result [here](doc/final_images.md). 
+
 
 ---
 
