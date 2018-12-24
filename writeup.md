@@ -182,8 +182,11 @@ You can see all the result [here](doc/final_results.md).
 ### Pipeline (video)
 
 #### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
+The code pipelining all the process is in section 'Pipeline' in  [./work/work.ipynb](./work/work.ipynb)
 
-Here's a [link to my video result](./project_video.mp4)
+`process_image(img):` compute all the process that I had shown. 
+
+Here's a [link to my video result](output_video/project_video.mp4)
 
 ---
 
