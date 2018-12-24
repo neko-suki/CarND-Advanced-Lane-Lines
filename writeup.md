@@ -83,41 +83,38 @@ s_thresh_max = 230
 
 Following is one example from the `test_images`. 
 
-|case|before undistorted|after undistorted|
+|case|before|after|
 |-|-|-|
-|straight_lines1.jpg|<img src="./test_images/straight_lines1.jpg" title="original" width=240>|   <img src="./output_images/binary_images/straight_lines1.jpg" title="undistorted" width=240>|
+|straight_lines1.jpg|<img src="./output_images/undistort_images/straight_lines1.jpg" title="original" width=240>|   <img src="./output_images/binary_images/straight_lines1.jpg" title="undistorted" width=240>|
 
 You can see all the result [here](doc/binary_results.md). 
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
-The code for my perspective transform includes a function called `warper()`, which appears in lines 1 through 8 in the file `example.py` (output_images/examples/example.py) (or, for example, in the 3rd code cell of the IPython notebook).  The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
+The code for undistorion is in section 'Make perspective image' in  [./work/work.ipynb](./work/work.ipynb)
+The function I defined is `make_perspective_image()`. 
+
+I hardcoded the src and dst in the code as follows. 
 
 ```python
-src = np.float32(
-    [[(img_size[0] / 2) - 55, img_size[1] / 2 + 100],
-    [((img_size[0] / 6) - 10), img_size[1]],
-    [(img_size[0] * 5 / 6) + 60, img_size[1]],
-    [(img_size[0] / 2 + 55), img_size[1] / 2 + 100]])
-dst = np.float32(
-    [[(img_size[0] / 4), 0],
-    [(img_size[0] / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), 0]])
+    src = np.float32([[200, 720],  [600, 450], [700, 450], [1100, 720]])
+    dst = np.float32([[200, 720],  [200,   0], [1100,   0], [1100, 720]])
 ```
-
-This resulted in the following source and destination points:
-
-| Source        | Destination   | 
-|:-------------:|:-------------:| 
-| 585, 460      | 320, 0        | 
-| 203, 720      | 320, 720      |
-| 1127, 720     | 960, 720      |
-| 695, 460      | 960, 0        |
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
-![alt text][image4]
+Following is one example from the `test_images`. 
+
+|case|before|after|
+|-|-|-|
+|straight_lines1.jpg|<img src="./output_images/binary_images/straight_lines1.jpg" title="undistorted" width=240>|   <img src="./output_images/perspective_images/straight_lines1.jpg" width=240>|
+
+You can see all the result [here](doc/perspective_results.md). 
+
+The result for `straight_lines1.jpg` seemingly not straight lines. However, from the final resuls, I judged it is still ok in this step. 
+
+In addition, it is very difficult to make this image as straight line with keep other images meaningful, i.e. having lane line inside the perspective image. 
+
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
