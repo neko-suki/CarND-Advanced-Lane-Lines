@@ -157,7 +157,7 @@ The first shows the file of image, the second shows the left line curvature, and
 
 The code for drawing back down on to the load is in section 'Drawing' in  [./work/work.ipynb](./work/work.ipynb)
 
-A function `create_final_image(img, warped, left_fitx, right_fitx, Minv, left_curvature)` make drawn image.
+A function `create_final_image(img, warped, left_fitx, right_fitx, Minv, left_curvature)` makes drawn image.
 
 The fist argument is the original image. The second one is wrapped images with polyfit line. The third and fourth is polygitted x coordinates of left and right lanes. They are used to compute offset of the vehicle. Minv is used to compute inverse perspectrive. 
 The last argument is used to plot curvature of lane. 
