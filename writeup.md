@@ -168,7 +168,7 @@ Following is one example from the `test_images`.
 |-|-|-|
 |straight_lines1.jpg|<img src="./test_images/straight_lines1.jpg" width=240>|   <img src="./output_images/final_images/straight_lines1.jpg" width=240>|
 
-You can see all the result [here](doc/final_images.md). 
+You can see all the result [here](doc/final_results.md). 
 
 
 ---
