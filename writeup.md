@@ -111,6 +111,11 @@ Following is one example from the `test_images`.
 
 You can see all the result [here](doc/perspective_results.md). 
 
+The result for `straight_lines1.jpg` seemingly not straight lines. However, from the final resuls, I judged it is still ok in this step. 
+
+In addition, it is very difficult to make this image as straight line with keep other images meaningful, i.e. having lane line inside the perspective image. 
+
+
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
 Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
