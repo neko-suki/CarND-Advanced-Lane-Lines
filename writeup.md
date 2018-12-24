@@ -137,6 +137,12 @@ The code for calculating curvature is in section 'Measure Curvature' in  [./work
 
 Here, I used 3rd order polynomial to compute curvature since 2nd order polynomial made a goot result. The result from 2nd order polynomial shows 80000 [m].  The 3rd order polynomial shows better result than the 2nd order polynomial. 
 
+Curvature is computed as following equation which is derived from the definition of the curvature
+
+```python
+curvature = (1 + (3 * fit_cr[0]  * y_eval ** 2 + 2 * fit_cr[1] * y_eval + fit_cr[2]) ** 2) ** 1.5 / np.absolute(6 * fit_cr[0] * y_eval + 2 * fit_cr[1]) 
+```
+
 I used `xm_per_pix = 3.7/900` since I perspected left lane at 200 and right lane at 1100. 
 
 The first shows the file of image, the second shows the left line curvature, and the third shows the right curvature. 
