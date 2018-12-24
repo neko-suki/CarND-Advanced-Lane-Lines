@@ -118,9 +118,18 @@ In addition, it is very difficult to make this image as straight line with keep 
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+The code for undistorion is in section 'Fit Polynomial' in  [./work/work.ipynb](./work/work.ipynb)
+The function I defined is `make_polyfit_image()`.  Inside the function, I did window search and fitting with 2nd order polynomial as introduced in the course. 
 
-![alt text][image5]
+Here, I did not make tuning because the final resuls is clearly acceptable. 
+
+Following is one example from the `test_images`. 
+
+|case|before|after|
+|-|-|-|
+|straight_lines1.jpg|<img src="./output_images/perspective_images/straight_lines1.jpg" width=240>|   <img src="./output_images/polyfit_images/straight_lines1.jpg" width=240>|
+
+You can see all the result [here](doc/polyfit_images.md). 
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
