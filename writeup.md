@@ -4,7 +4,7 @@ The goals / steps of this project are the following:
 
 * Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
 * Apply a distortion correction to raw images.
-* Use color transforms, gradients, etc., to create a thresholded binary image.
+* Use color transforms, gradients, etc., to create a thresholder binary image.
 * Apply a perspective transform to rectify binary image ("birds-eye view").
 * Detect lane pixels and fit to find the lane boundary.
 * Determine the curvature of the lane and vehicle position with respect to center.
@@ -77,7 +77,7 @@ You can see all the result [here](doc/binary_results.md).
 
 #### 3. Make perspective image
 
-The code for makeing perspective image is in section 'Make perspective image' in  [./work/work.ipynb](./work/work.ipynb)
+The code for making perspective image is in section 'Make perspective image' in  [./work/work.ipynb](./work/work.ipynb)
 The function I defined is `make_perspective_image()`. 
 
 I hardcoded the src and dst in the code as follows. 
@@ -97,7 +97,7 @@ Following is one example from the `test_images`.
 
 You can see all the result [here](doc/perspective_results.md). 
 
-The result for `straight_lines1.jpg` seemingly not straight lines. However, from the final resuls, I judged it is still ok in this step. 
+The result for `straight_lines1.jpg` seemingly not straight lines. However, from the final results, I judged it is still ok in this step. 
 
 In addition, it is very difficult to make this image as straight line with keep other images meaningful, i.e. having lane line inside the perspective image. 
 
@@ -121,7 +121,7 @@ You can see all the result [here](doc/polyfit_images.md).
 
 The code for calculating curvature is in section 'Measure Curvature' in  [./work/work.ipynb](./work/work.ipynb)
 
-Here, I used 3rd order polynomial to compute curvature since 2nd order polynomial made a goot result. The result from 2nd order polynomial shows 80000 [m].  The 3rd order polynomial shows better result than the 2nd order polynomial. 
+Here, I used 3rd order polynomial to compute curvature since 2nd order polynomial made a good result. The result from 2nd order polynomial shows 80000 [m].  The 3rd order polynomial shows better result than the 2nd order polynomial. 
 
 Curvature is computed as following equation which is derived from the definition of the curvature
 
@@ -151,7 +151,7 @@ The code for drawing back down on to the road is in section 'Drawing' in  [./wor
 
 A function `create_final_image(img, warped, left_fitx, right_fitx, Minv, left_curvature)` makes drawn image.
 
-The fist argument is the original image. The second one is wrapped images with polyfit line. The third and fourth is polygitted x coordinates of left and right lanes. They are used to compute offset of the vehicle. Minv is used to compute inverse perspectrive. 
+The fist argument is the original image. The second one is wrapped images with polyfit line. The third and fourth is polyfitted x coordinates of left and right lanes. They are used to compute offset of the vehicle. Minv is used to compute inverse perspective. 
 The last argument is used to plot curvature of lane. 
 
 Following is one example from the `test_images`. 
@@ -182,12 +182,12 @@ Here's a [link to my video result](output_videos/project_video.mp4)
 Here I'll talk about problems what I faced with the project. 
 
 #### Lots of parameters 
-The pipline has a lots of parameters for tuning. In the current project, the scene is only highway with sunny and daylight. 
+The pipeline has a lot of parameters for tuning. In the current project, the scene is only highway with sunny and daylight. 
 
-Pipline with the parameter may make bad result if the condition of ther road or time changes. 
+Pipeline with the parameter may make bad result if the condition of the road or time changes. 
 
 #### Processing time 
-Current pipline shows about 1 sec to make results. In the real world, 1 sec is too slow to detect edge. 
+Current pipeline shows about 1 sec to make results. In the real world, 1 sec is too slow to detect edge. 
 I also tried `Skip the sliding windows step once you've found the lines` introduced in lectures. But it doesn't improve the performance. 
 
 I can improve the performance by dropping some step, e.g. only use color or only use gradient, to speedup processing time, make speedup.  However, we should consider trade-off between the precision of the result and throughput of detection. 
@@ -195,6 +195,6 @@ I can improve the performance by dropping some step, e.g. only use color or only
 #### Hypothesis case to be failed
 In the perspective step, I assumed that the left lane is on 200, and the right one is on 1100 at the bottom of the image. If this assumption is wrong, the result of the lane line detection may fail. 
 
-Self detection of the position at the bottom of the image may improve the result. 
+Self-detection of the position at the bottom of the image may improve the result. 
 
-2nd order polynomial may be faiiled if the lane line has two curves like `harder_challenge_video.mp4`. 3rd order polynomial or another equation to represent lane line is required.
+2nd order polynomial may be failed if the lane line has two curves like `harder_challenge_video.mp4`. 3rd order polynomial or another equation to represent lane line is required.
