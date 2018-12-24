@@ -121,7 +121,7 @@ In addition, it is very difficult to make this image as straight line with keep 
 The code for undistorion is in section 'Fit Polynomial' in  [./work/work.ipynb](./work/work.ipynb)
 The function I defined is `make_polyfit_image()`.  Inside the function, I did window search and fitting with 2nd order polynomial as introduced in the course. 
 
-Here, I did not make tuning because the final resuls is clearly acceptable. 
+Here, I did not make tuning because the final results is clearly acceptable. 
 
 Following is one example from the `test_images`. 
 
