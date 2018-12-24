@@ -56,7 +56,7 @@ To demonstrate this step, I will describe how I apply the distortion correction 
 
 |case|before undistorted|after undistorted|
 |-|-|-|
-|straight_line1.jpg|<img src="./test_images/straightline1.jpg" title="original" width=240>|   <img src="./output_images/undistort_images/straightline1.jpg" title="undistorted" width=240>|
+|straight_lines1.jpg|<img src="./test_images/straight_lines1.jpg" title="original" width=240>|   <img src="./output_images/undistort_images/straight_lines1.jpg" title="undistorted" width=240>|
 
 You can see all the result [here](doc/undistort_results.md). 
 
